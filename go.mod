@@ -1,4 +1,4 @@
-module github.com/alexhokl/gcp-pubsub-publisher
+module github.com/alexhokl/gcp-pubsub
 
 go 1.22.0
 

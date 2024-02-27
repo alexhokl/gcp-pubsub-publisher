@@ -11,14 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type punlishOptions struct {
+type publishOptions struct {
 	file    string
 	project string
 	topic   string
 }
 
 var (
-	publishOpts punlishOptions
+	publishOpts publishOptions
 )
 
 var publishCmd = &cobra.Command{

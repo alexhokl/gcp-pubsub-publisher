@@ -1,0 +1,38 @@
+version: '3'
+
+env:
+  GCP_PROJECT_ID: test_project
+  GCP_PUBSUB_SUBSCRIPTION_NAME: test_subscription
+  GCP_PUBSUB_TOPIC_NAME: test_topic
+
+tasks:
+
+  build:
+    desc: Build without artifact
+    silent: true
+    cmd: go build -o /dev/null
+
+  run:
+    desc: Run Go code
+    silent: true
+    cmd: go run main.go
+
+  install:
+    desc: Install
+    silent: true
+    cmd: go install
+
+  test:
+    desc: Run unit tests
+    silent: true
+    cmd: go test -coverprofile=cover.out ./... && go tool cover -html=cover.out
+
+  emulator:
+    desc: Run Pub/Sub emulator
+    silent: true
+    cmd: docker compose up -d
+
+  emulator-logs:
+    desc: Show logs of Pub/Sub emulator
+    silent: true
+    cmd: docker-compose logs -f pubsub

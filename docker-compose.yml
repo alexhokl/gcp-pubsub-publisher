@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+
+  pubsub:
+    image: messagebird/gcloud-pubsub-emulator
+    container_name: pubsub
+    ports:
+      - 8681:8681
+    environment:
+      PUBSUB_EMULATOR_HOST: "pubsub:8681"
+      PUBSUB_PROJECT1: "${GCP_PROJECT_ID},\
+        ${GCP_PUBSUB_TOPIC_NAME}:${GCP_PUBSUB_SUBSCRIPTION_NAME}\
+        "

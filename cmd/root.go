@@ -8,7 +8,7 @@ import (
 var cfgFile string
 
 var rootCmd = &cobra.Command{
-	Use:          "gcp-pubsub-publisher",
+	Use:          "gcp-pubsub",
 	Short:        "An application publish a message to Google Cloud Pub/Sub topic",
 	SilenceUsage: true,
 }

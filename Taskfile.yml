@@ -1,12 +1,12 @@
-version: '3'
+version: "3"
 
 env:
+  APP_NAME: gcp-pubsub-publisher
   GCP_PROJECT_ID: test_project
   GCP_PUBSUB_SUBSCRIPTION_NAME: test_subscription
   GCP_PUBSUB_TOPIC_NAME: test_topic
 
 tasks:
-
   build:
     desc: Build without artifact
     silent: true
@@ -36,3 +36,11 @@ tasks:
     desc: Show logs of Pub/Sub emulator
     silent: true
     cmd: docker-compose logs -f pubsub
+
+  completion-mac:
+    desc: Generate bash completion and save to homebrew
+    cmd: $APP_NAME completion bash > /opt/homebrew/etc/bash_completion.d/$APP_NAME
+
+  completion-linux:
+    desc: Generate bash completion and save configuration directory
+    cmd: $APP_NAME completion bash | sudo tee /etc/bash_completion.d/$APP_NAME
